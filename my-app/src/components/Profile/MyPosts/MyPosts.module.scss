@@ -1,0 +1,31 @@
+input, button{
+    display: block;
+}
+
+input{
+    width: 60%;
+    margin: 10px;
+    height: 80px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    &:focus{
+        box-shadow: 0 0 10px 10px gray ;
+    }
+    transition: 0.5s;
+}
+
+button{
+    margin-left: 10px;
+    height: 40px;
+    width: 110px;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    &:hover{
+        background-color: transparent;
+        color: black;
+    }
+    transition: 1s;
+}

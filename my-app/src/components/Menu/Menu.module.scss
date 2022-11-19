@@ -1,0 +1,25 @@
+.menu__list{
+    overflow: hidden;
+    border-radius: 0 20px 0 0 ;
+    display: block;
+    grid-area: menu-nav;
+    background-color:rgb(214, 215, 213);
+}  
+  
+.menu__link{
+    color: black;
+    display: block;
+    padding: 10px 20px;
+    cursor: pointer;
+    &_active{
+        color: black;
+        display: block;
+        padding: 10px 20px;
+        cursor: pointer;
+        background: wheat;
+    }
+}
+  
+.menu__link:hover{
+    background: wheat;
+}
