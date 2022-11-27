@@ -1,0 +1,19 @@
+.profile__header{
+    display: block;
+    max-width: 100%;
+}
+
+.profile__person{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.profile__name{
+    font-size: 20px;
+    padding: 10px 0px;
+}
+
+.profile__img{
+    width: 90px;
+}

@@ -2,17 +2,25 @@ import React from 'react';
 import classes from './MyPosts.module.scss'
 import Post from './Posts/Post';
 
-const MyPosts = () => {
+const MyPosts = (props) => {
+  let postsElements = props.postsData.map(post => <Post id={post.id} message={post.message} likesCount={post.likesCount} />)
+
+  let newPostElement = React.createRef();
+
+  let addPost = () => {
+    let text = newPostElement.current.value;
+    props.addPost(text)
+  }
+  
   return (
     <div className={classes.posts}>
         <div className={classes.title}></div>
         <div className={classes.form}>
-            <input type="textarea" />
-            <button>Send</button>
+            <input ref={newPostElement} type="textarea" />
+            <button onClick={ addPost }>Send</button>
         </div>
         <div className={classes.posts}>
-            <Post message="It's my second post" />
-            <Post message="It's my first post" />            
+            {postsElements}           
         </div>
     </div>
   )

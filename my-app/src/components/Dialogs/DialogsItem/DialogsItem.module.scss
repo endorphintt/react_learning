@@ -1,0 +1,16 @@
+.dialog{
+    display: block;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: black;
+    &:hover{
+        background: wheat;
+    }
+}
+
+.dialog._active{
+    background: wheat;
+}
