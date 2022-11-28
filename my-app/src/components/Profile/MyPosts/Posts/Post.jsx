@@ -5,7 +5,8 @@ const Post = (props) => {
     return(
         <div className={classes.post__container}>
             <div className={classes.post__content}>
-                {props.message} {props.likesCount}
+                <div>{props.message}</div> 
+                <div>{props.likesCount}</div>
             </div>
         </div>
     )

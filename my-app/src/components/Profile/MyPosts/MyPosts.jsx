@@ -8,15 +8,20 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
+    props.addPost();
+    props.updateNewPostText('');
+  }
+
+  let onPostChange = () => {
     let text = newPostElement.current.value;
-    props.addPost(text)
+    props.updateNewPostText(text);
   }
   
   return (
     <div className={classes.posts}>
         <div className={classes.title}></div>
         <div className={classes.form}>
-            <input ref={newPostElement} type="textarea" />
+            <input ref={newPostElement} onChange={ onPostChange } type="textarea" />
             <button onClick={ addPost }>Send</button>
         </div>
         <div className={classes.posts}>
