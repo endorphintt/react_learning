@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from './Redux/state';
-import { addPost } from './Redux/state';
-import { renderPage } from './render'
+import store from './Redux/state';
 
-renderPage(state);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let renderPage = (state) => {
+    
+    root.render(
+        <React.StrictMode>
+        <App appState={state} dispatch={store.dispatch.bind(store)}/>
+        </React.StrictMode>
+    );
+}
+
+renderPage(store.getState());
+
+store.subscribe(renderPage);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
