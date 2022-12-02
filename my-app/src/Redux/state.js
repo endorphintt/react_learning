@@ -32,6 +32,7 @@ let store = {
         },
     },
     dispatch(action) {
+        debugger;
         if(action.type === 'ADD-POST') {
             let newPost = {
                 id: 5,
@@ -39,7 +40,6 @@ let store = {
                 likesCount: 0,
             };       
             this._state.ProfilePage.postsData.push(newPost);
-            this._state.ProfilePage.newPostText = '';
             this._renderPage(this._state);
         } else if(action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.ProfilePage.newPostText = action.newText;
@@ -49,13 +49,22 @@ let store = {
     getState() {
         return this._state;
     },
-    updateNewPostText(newText) {
-        this._state.ProfilePage.newPostText = newText;
-        this._renderPage(this._state);
-    },
     subscribe(observer){
         this._renderPage = observer;
     },
+}
+
+export const addPostActionCreator = () => {
+    return {
+      type: 'ADD-POST',
+    }
+  }
+  
+export const updateNewPostTextActionCreator = (text) => {
+    return {
+       type: 'UPDATE-NEW-POST-TEXT',
+       newText: text,
+    }
 }
 
 export default store;
