@@ -3,7 +3,10 @@ import classes from './Message.module.scss'
 
 const Message = (props) => {
   return (
-    <div className={classes.message}>{props.message} {props.likesCount} likes</div>
+    <div className={classes.message}>
+      <div>{props.message} </div>
+      <div>{props.likesCount} likes</div>
+    </div>
   )
 }
 

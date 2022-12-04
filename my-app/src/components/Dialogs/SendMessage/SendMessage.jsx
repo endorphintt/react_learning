@@ -1,11 +1,24 @@
 import React from 'react';
-import classes from './SendMessage.module.scss'
+import classes from './SendMessage.module.scss';
+import { sendMessageCreator } from '../../../Redux/dialogs_reducer';
+import { updateNewMessageBody } from '../../../Redux/dialogs_reducer';
 
-const SendMessage = () => {
+const SendMessage = (props) => {
+
+  let onSendMessageClick = () => {
+    props.dispatch(sendMessageCreator());
+  }
+
+  let onMessageClick = (e) => {
+    let body = e.target.value;
+    props.dispatch(updateNewMessageBody(body))
+  }
+
+
   return (
     <div className={classes.sendMessage}>
-      <textarea className={classes.sendMessage__text}></textarea>
-      <button className={classes.sendMessage__button}>Send</button>
+      <textarea onChange={ onMessageClick } value={props.newMessageBody} className={classes.sendMessage__text}></textarea>
+      <button onClick={ onSendMessageClick } className={classes.sendMessage__button}>Send</button>
     </div>
   )
 }

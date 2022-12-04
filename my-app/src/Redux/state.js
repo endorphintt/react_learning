@@ -1,3 +1,6 @@
+import profileReducer from "./profile_reducer";
+import dialogsReducer from './dialogs_reducer'
+
 let store = {
     _state: {
         ProfilePage: {
@@ -17,8 +20,7 @@ let store = {
                 {id: 4, name: 'Sasha'},
                 {id: 5, name: 'Viktor'},
                 {id: 6, name: 'Oleg'},
-            ],
-              
+            ],             
             MessageData: [
                 {id: 1, message: 'Hi!', likesCount: 2},
                 {id: 1, message: 'How are you?', likesCount: 3},
@@ -29,22 +31,15 @@ let store = {
                 {id: 6, message: 'I\'d like to show me', likesCount: 45},
                 {id: 2, message: 'what?', likesCount: 56},
             ],
+            newMessageBody: '',
         },
     },
     dispatch(action) {
-        debugger;
-        if(action.type === 'ADD-POST') {
-            let newPost = {
-                id: 5,
-                message: this._state.ProfilePage.newPostText,
-                likesCount: 0,
-            };       
-            this._state.ProfilePage.postsData.push(newPost);
-            this._renderPage(this._state);
-        } else if(action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.ProfilePage.newPostText = action.newText;
-            this._renderPage(this._state);
-        } 
+
+        this._state.ProfilePage = profileReducer(this._state.ProfilePage, action);
+        this._state.MessagesPage = dialogsReducer(this._state.MessagesPage, action);
+
+        this._renderPage(this._state);
     },
     getState() {
         return this._state;
@@ -52,19 +47,6 @@ let store = {
     subscribe(observer){
         this._renderPage = observer;
     },
-}
-
-export const addPostActionCreator = () => {
-    return {
-      type: 'ADD-POST',
-    }
-  }
-  
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-       type: 'UPDATE-NEW-POST-TEXT',
-       newText: text,
-    }
 }
 
 export default store;
