@@ -1,4 +1,13 @@
-const profileReducer = (state, action) => {
+let initialState = {
+    postsData: [
+        {id: 1, message:"It's my second post", likesCount:'12'},
+        {id: 2, message:"It's my first post", likesCount:'2'},
+    ],
+
+    newPostText: 'it-kamasutra',
+}
+
+const ProfileReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'ADD-POST':
             let newPost = {
@@ -29,4 +38,4 @@ export const updateNewPostTextActionCreator = (text) => {
     }
 }
 
-export default profileReducer;
+export default ProfileReducer;
