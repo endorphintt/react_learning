@@ -17,7 +17,7 @@ function App(props) {
         <Menu />
         <div className="app__content">
           <Routes>
-            <Route path='/dialogs/*' element={<DialogsContainer store={props.store} MessageData={props.appState.MessagesPage.MessageData} DialogsData={props.appState.MessagesPage.DialogsData} dispatch={props.dispatch}/>}/>
+            <Route path='/dialogs/*' element={<DialogsContainer store={props.store}/>}/>
             <Route path='/profile' element={<Profile store={props.store}/>}/>
             <Route path='/music' element={<Music />}/> 
             <Route path='/news' element={<News />}/> 
