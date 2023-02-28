@@ -1,13 +1,8 @@
 import React from "react";
 import './Dialogs.scss'
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
-import { updateNewMessageBodyActionCreator, sendMessageActionCreator } from "../../redux/dialogsReducer";
 
-
-const Dialogs = (props) => {
+const Dialogs = (props) => { 
     let newMessageBody = React.createRef();
-
 
     const updateMessageBody = () => {
         let text = newMessageBody.current.value;
